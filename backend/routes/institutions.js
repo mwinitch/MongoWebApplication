@@ -23,6 +23,7 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 });
 
+/*
 router.route('/update/:id').post((req, res) => {
     Institution.findById(req.params.id)
       .then(institute => {
@@ -36,5 +37,16 @@ router.route('/update/:id').post((req, res) => {
       })
       .catch(err => res.status(400).json('Error: ' + err));
   });
+*/
+
+router.route('/update/:id').patch(async(req, res) => {
+  try {
+    const post = await Institution.findByIdAndUpdate(req.params.id, req.body);
+    if (!post) throw Error("An error occured while trying to update the post");
+    res.status(200).json({ success: true});
+  } catch(err) {
+    res.status(400).json({ msg: err });
+  }
+});
 
 module.exports = router;

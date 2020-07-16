@@ -26,6 +26,7 @@ export default class InstitutionList extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.tableHead = this.tableHead.bind(this);
         this.tableBody = this.tableBody.bind(this);
+        this.searchArray = this.searchArray.bind(this);
 
         this.state = {
             institutions: [],
@@ -64,12 +65,24 @@ export default class InstitutionList extends Component {
         // console.log(searchCriteria);
         axios.get('http://localhost:5000/institutions/')
             .then(response => {
-                this.setState({ institutions: response.data })
+                this.searchArray(searchCriteria, response.data);
+                //this.setState({ institutions: response.data })
             })
             .catch((error) => {
                 console.log(error);
             });
         
+    }
+
+    searchArray(searchCriteria, data) {
+        console.log(searchCriteria.name);
+        console.log(searchCriteria.city);
+        let newArray = data.filter(institute => {
+            return (institute.name.includes(searchCriteria.name) && 
+                    institute.city.includes(searchCriteria.city) && 
+                    institute.country.includes(searchCriteria.country))
+        });
+        this.setState({ institutions: newArray });
     }
 
     tableBody() {
