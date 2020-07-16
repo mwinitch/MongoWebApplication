@@ -3,8 +3,11 @@ This project is a full stack application using MERN (Mongo, Express, React, and 
 
 ## Running the Application
 To run the backend do the following:
+
 `cd backend`
+
 `npm run start`
+
 This will run the backend server on port 5000. 
 
 Then, in another terminal, to run the frontend:
