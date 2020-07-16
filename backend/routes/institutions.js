@@ -23,21 +23,6 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 });
 
-/*
-router.route('/update/:id').post((req, res) => {
-    Institution.findById(req.params.id)
-      .then(institute => {
-        institute.name = req.body.name;
-        institute.city = req.body.city;
-        institute.country = req.body.country;
-  
-        institute.save()
-          .then(() => res.json('Institute has been updated'))
-          .catch(err => res.status(400).json('Error: ' + err));
-      })
-      .catch(err => res.status(400).json('Error: ' + err));
-  });
-*/
 
 router.route('/update/:id').patch(async(req, res) => {
   try {

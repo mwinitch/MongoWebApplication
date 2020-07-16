@@ -56,17 +56,6 @@ export default class EditInstitution extends Component {
             country: this.state.country
         }
 
-        // console.log(institue);
-        //axios.post('http://localhost:5000/institutions/add', institute)
-        //    .then(result => console.log(result.data));
-        
-        /*
-            this.setState({
-            name: '',
-            city: '',
-            country: ''
-        });
-        */
 
         axios.patch('http://localhost:5000/institutions/update/' + this.props.match.params.id, institute)
         .then(res => console.log(res.data));
