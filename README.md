@@ -11,5 +11,7 @@ To run the backend do the following:
 This will run the backend server on port 5000. 
 
 Then, in another terminal, to run the frontend:
+
 `npm start`
+
 This will React on port 3000. 
